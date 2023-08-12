@@ -1,0 +1,346 @@
+*{
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  color:#83fbff;
+  transition: 500ms;
+}
+
+body{
+  font-family: 'Montserrat',sans-serif;
+  background-image: url("img/bgNight.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* -------------- PAGE LAYOUT -------------- */
+
+#mainContainer{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#mycol1{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1%;
+}
+
+#mycol2{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1%;
+  padding-top: 2%;
+}
+
+#mycol3{
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+}
+
+/* -------------- CONTROLS SECTION -------------- */
+
+#controlsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5%;
+  margin-top: 5%;
+  border-radius: 40px;
+  background-color: rgba(0, 55, 90, 0.8);
+}
+
+.controlsHeading{
+  font-weight: 700;
+  font-size: x-large;
+}
+
+/* Weather in different cities: */
+
+#citiesContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.city{
+  display: flex;
+  align-items: center;
+  margin: 1%;
+}
+
+.cityTextButton{
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  font-size: x-large;
+  font-weight: 500;
+}
+
+.cityTextButton:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+.cityTextButton:hover{
+  color: #ffffff;
+}
+
+.cityImgButton{
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin-right: 5%;
+  background-size: cover;
+}
+
+.cityImgButton:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+.cityImgButton:hover{
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin-right: 5%;
+  background-size: cover;
+}
+
+#dhakaButton1{
+  background-image: url(img/dhakaNight.png);
+}
+
+#sydneyButton1{
+  background-image: url(img/sydneyNight.png);
+}
+
+#sfButton1{
+  background-image: url(img/sfNight.png);
+}
+
+#rdjButton1{
+  background-image: url(img/rdjNight.png);
+}
+
+#londonButton1{
+  background-image: url(img/londonNight.png);
+}
+
+#dhakaButton1:hover{
+  background-image: url(img/dhakaHover.png);
+}
+
+#sydneyButton1:hover{
+  background-image: url(img/sydneyHover.png);
+}
+
+#sfButton1:hover{
+  background-image: url(img/sfHover.png);
+}
+
+#rdjButton1:hover{
+  background-image: url(img/rdjHover.png);
+}
+
+#londonButton1:hover{
+  background-image: url(img/londonHover.png);
+}
+
+
+
+/* Weather in coordinates: */
+
+#coordinatesContainer{
+  margin: 5% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#latitudeInput{
+  margin: 0 2%;
+  width: 25%;
+}
+
+#longitudeInput{
+  margin: 0 2%;
+  width: 25%;
+}
+
+#coordinatesButton{
+  color: #00375a;
+  margin-top: 2%;
+  width: 50%;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 20px;
+  background-color: #83fbff;
+  border-color: #83fbff;
+}
+
+#coordinatesButton:hover{
+  color: #005b94;;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* Weather in current location: */
+
+#currentLocationContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#currentLocationButton{
+  color: #00375a;
+  width: 50%;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 20px;
+  background-color: #83fbff;
+  border-color: #83fbff;
+}
+
+#currentLocationButton:hover{
+  color: #005b94;;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* -------------- INFORMATION SECTION -------------- */
+
+#mainTempText{
+  font-size: 150px;
+  font-weight: 500;
+  margin: 0;
+  height: 180px;
+}
+
+#feelsLikeContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 3%;
+  padding-bottom: 0;
+  margin-top: 0;
+  border-radius: 20px;
+  background-color: rgba(131, 251, 255, 0.8);
+}
+
+#feelsLikeText{
+  margin: 0;
+  font-size: 40px;
+  font-style: italic;
+  color: #00375a;
+  text-shadow: 2px 2px 4px #0188aa;
+  ;
+}
+
+#feelsLikeLocation{
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: #00375a;
+  text-shadow: 2px 2px 4px #0188aa;
+}
+
+#feelsLikeTime{
+  font-size:25px;
+  color: #00375a;
+  text-shadow: 5px 5px 5px #0188aa;
+}
+
+#weatherDetailsConainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail{
+  display: flex;
+  align-items: center;
+  margin-top: 3%;
+}
+
+.detailImg{
+  background-position: center;
+  background-size: cover;
+  height: 45px;
+  width: 45px;
+  margin: 0 3%;
+}
+
+#descImg{
+  background-image: url(img/descNight.png);
+}
+
+#humidityImg{
+  background-image: url(img/humidityNight.png);
+}
+
+#maxTempImg{
+  background-image: url(img/maxTempNight.png);
+}
+
+#minTempImg{
+  background-image: url(img/minTempNight.png);
+}
+
+
+.detail p{
+  font-weight: 700;
+  font-size: x-large;
+  margin: 0%;
+}
+
+#weatherType{
+  text-transform: capitalize
+}
+
+/* -------------- FORECAST SECTION -------------- */
+
+#forecastContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2%;
+  margin-top: 2%;
+  border-radius: 40px;
+  background-color: rgba(0, 55, 90, 0.8);
+}
+
+#forecastContainer p{
+  padding-left: 20px;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+#temperatureChart{
+  max-height: 256px;
+
+}
+
+#dailyWeatherContainer{
+  display: flex;
+  justify-content: space-between;
+  max-width: 97%;
+
+}
+
+#dailyWeatherContainer p{
+  font-size: 20px;
+  font-weight: 700;
+  font-style: italic;
+}

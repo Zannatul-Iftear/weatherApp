@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900|Ubuntu:400,500,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link id="stylesheet" rel="stylesheet" href="styleDay.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <title>Iftear's Weather App</title>
+    <script src="myApp.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <div class="container" id="mainContainer">
+
+      <div class="row">
+
+        <!------------- CONTROLS SECTION ------------->
+
+        <div class="col-md-6" id="mycol1">
+          <div id="controlsContainer">
+          
+            <div id="citiesContainer">
+              <p class="controlsHeading">Weather in different cities:</p>
+              <div class="city">
+                <button type="button" class="cityImgButton" id="dhakaButton1"></button>
+                <button type="button" class="cityTextButton" id="dhakaButton2">Dhaka, Bangladesh</button>
+              </div>
+              <div class="city">
+                <button type="button" class="cityImgButton" id="sydneyButton1"></button>
+                <button type="button" class="cityTextButton" id="sydneyButton2">Sydney, Australia</button>
+              </div>
+              <div class="city">
+                <button type="button" class="cityImgButton" id="sfButton1"></button>
+                <button type="button" class="cityTextButton" id="sfButton2">San Francisco, USA</button>
+              </div>
+              <div class="city">
+                <button type="button" class="cityImgButton" id="rdjButton1"></button>
+                <button type="button" class="cityTextButton" id="rdjButton2">Rio de Jeneiro, Brazil</button>
+              </div>
+              <div class="city">
+                <button type="button" class="cityImgButton" id="londonButton1"></button>
+                <button type="button" class="cityTextButton" id="londonButton2">London, UK</button>
+              </div>
+            </div>
+
+            <div id="coordinatesContainer">
+              <p class="controlsHeading">Weather in coordinates:</p>
+              <form class="form-inline">
+                <label for="latitude">Latitude:</label>
+                <input type="number" class="form-control" id="latitudeInput" name="latitude" value=0 required>
+                <label for="latitude">Longitude:</label>
+                <input type="number" class="form-control" id="longitudeInput" name="longitude" value=0 required>
+                <button type="button" class="btn btn-primary mb-2" id="coordinatesButton">View</button>
+            </form>
+            </div>
+
+            <div id="currentLocationContainer">
+              <p class="controlsHeading">Weather in current location:</p>
+              <button type="button" class="btn btn-primary mb-2" id="currentLocationButton">View</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!------------- INFORMATION SECTION ------------->
+
+        <div class="col-md-6" id="mycol2">
+
+          <p id="mainTempText">41°c</p>
+          <div id="feelsLikeContainer">
+            <p id="feelsLikeText">Feels like 50°c</p>
+            <p id="feelsLikeLocation">in Dhaka Bangladesh</p>
+            <p id="feelsLikeTime">12:00am</p>
+          </div>
+
+          <div id="weatherDetailsConainer">
+            <div class="detail">
+              <div class="detailImg" id="descImg"></div>
+              <p id="weatherType">Dhaka, Bangladesh</p>
+            </div>
+            <div class="detail">
+              <div class="detailImg" id="humidityImg"></div>
+              <p id="humidity">Dhaka, Bangladesh</p>
+            </div>
+            <div class="detail">
+              <div class="detailImg" id="maxTempImg"></div>
+              <p id="temp_max">Dhaka, Bangladesh</p>
+            </div>
+            <div class="detail">
+              <div class="detailImg" id="minTempImg"></div>
+              <p id="temp_min">Dhaka, Bangladesh</p>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <!------------- FORECAST SECTION ------------->
+
+      <div class="row" id="forecastRow">
+        <div class="col-md-12" id="mycol3">
+          <div id="forecastContainer" style="width: 100%; margin: 0 auto;">
+            <p>Forecast</p>
+
+            <!------- LINE CHART WITH HELP FROM CHAT GPT ------->
+
+            <canvas id="temperatureChart"></canvas>
+            <script>
+              let themeCol = '#00375a';
+              let forecastData=[20, 25, 18, 15, 30];
+              Chart.register(ChartDataLabels);
+              var chartConfig = {
+
+                type: 'line',
+                data: {
+                  labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
+                  datasets: [{
+                    label: 'Temperature',
+                    data: forecastData,
+                    borderColor: themeCol,
+                    backgroundColor: 'transparent',
+                    pointBackgroundColor: themeCol,
+                    pointBorderColor: themeCol,
+                    pointHoverBackgroundColor: themeCol,
+                    pointHoverBorderColor: themeCol
+                  }]
+                },
+
+                options: {
+                  layout: {
+                    padding: {
+                      left: 50, right: 50, top: 0, bottom: 0
+                    }
+                  },
+
+                  scales: {
+                    y: {
+                      display: false
+                    },
+                    x: { 
+                      ticks: {color: themeCol, font: {size: 20}}
+                    }
+                  },
+
+                  plugins: {
+                    legend: 
+                    { 
+                      display: false 
+                    },
+                    datalabels: 
+                    {
+                      font: {family: 'Montserrat, sans-serif', weight: 'bold', size: 25},
+                      align: 'top', color: themeCol, 
+                      formatter: function(value) {return value + '°C';}     
+                    }
+                  }
+                }
+              };
+
+              var ctx = document.getElementById('temperatureChart').getContext('2d');
+              var myChart = new Chart(ctx, chartConfig);
+            </script>
+            <script src="updateChart.js"></script>
+
+            <div id="dailyWeatherContainer">
+              <p id="forDesc1">Cloudy</p>
+              <p id="forDesc2">Rainy</p>
+              <p id="forDesc3">Doggo</p>
+              <p id="forDesc4">Sunny</p>
+              <p id="forDesc5">Clear</p>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+  </body>
+</html>
